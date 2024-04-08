@@ -9,6 +9,7 @@ body {
 .container {
   margin: 20px auto;
   width: 1000px;
+  height: 100vh;
 }
 
 .row {
@@ -31,13 +32,14 @@ hr {
   flex: 1;
   text-align: right;
 }
-
+/** the syling of the category name */
 .game-info .category span {
   text-transform: capitalize;
   color: #e31e63;
   font-weight: bold;
 }
 
+/** The HangMan Styles */
 .hangman-draw {
   flex: 1;
   background-color: #f8f8f8;
@@ -51,6 +53,8 @@ hr {
   border-bottom: 4px solid #222;
   position: relative;
   margin: auto;
+  left: -60px;
+  display: none;
 }
 
 .hangman-draw .the-stand::before {
@@ -61,8 +65,11 @@ hr {
   height: 100%;
   left: 50%;
   margin-left: -2px;
+  display: none;
 }
-
+.hangman-draw .the-hang {
+  display: none;
+}
 .hangman-draw .the-hang::before {
   content: "";
   position: absolute;
@@ -90,6 +97,7 @@ hr {
   position: absolute;
   left: 95px;
   top: 45px;
+  display: none;
 }
 
 .hangman-draw .the-man .head {
@@ -100,6 +108,7 @@ hr {
   position: absolute;
   top: 55px;
   left: 105px;
+  display: none;
 }
 
 .hangman-draw .the-man .body {
@@ -109,8 +118,12 @@ hr {
   height: 110px;
   top: 102px;
   left: 130px;
+  display: none;
 }
 
+.hangman-draw .the-man .hands {
+  display: none;
+}
 .hangman-draw .the-man .hands::before,
 .hangman-draw .the-man .hands::after {
   content: "";
@@ -131,6 +144,10 @@ hr {
   left: 130px;
 
   transform: rotate(-30deg);
+}
+
+.hangman-draw .the-man .legs {
+  display: none;
 }
 
 .hangman-draw .the-man .legs::before,
@@ -154,6 +171,41 @@ hr {
 
   transform: rotate(30deg);
 }
+/** Displaying the hangman depending on the classes that are set on the js*/
+
+.hangman-draw.wrong-1 .the-draw {
+  display: block;
+}
+
+.hangman-draw.wrong-2 .the-stand::before {
+  display: block;
+}
+
+.hangman-draw.wrong-3 .the-hang {
+  display: block;
+}
+
+.hangman-draw.wrong-4 .the-rope {
+  display: block;
+}
+
+.hangman-draw.wrong-5 .head {
+  display: block;
+}
+
+.hangman-draw.wrong-6 .body {
+  display: block;
+}
+
+.hangman-draw.wrong-7 .hands {
+  display: block;
+}
+
+.hangman-draw.wrong-8 .legs {
+  display: block;
+}
+
+/**the letters styling*/
 
 .letters {
   flex: 1;
@@ -161,11 +213,15 @@ hr {
   text-align: center;
 }
 
+.letters.finished {
+  pointer-events: none;
+}
+
 .letters .letter-box {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background-color: #009688 ;
+  background-color: #009688;
   color: #fff;
   font-size: 24px;
   margin-right: 10px;
@@ -174,6 +230,67 @@ hr {
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 10px;
-  
+}
 
+/** the class of the clicked letter*/
+.letters .letter-box.clicked {
+  background-color: #222;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/** The Letters Guess Styles */
+
+.letters-guess {
+  margin: 10px auto;
+  background-color: #f8f8f8;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 104px;
+}
+
+.letters-guess span {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #fdfdfd;
+  border-bottom: 3px solid #222;
+  transition: 3s;
+}
+/** The Style For The Spaces */
+.letters-guess span.with-space {
+  background: none;
+  border-bottom: none;
+  position: relative;
+}
+
+.letters-guess span.with-space::before {
+  content: "";
+  width: 20px;
+  height: 4px;
+  background-color: #222;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.popup {
+  position: fixed;
+  background-color: #009688;
+  padding: 100px 20px;
+  width: 80%;
+  top: 10%;
+  left: 10%;
+  text-align: center;
+  font-size: 40px;
+  border: 1px solid #ccc;
+  color: #fff;
 }
