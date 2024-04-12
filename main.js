@@ -35,8 +35,6 @@ const words = {
     "C#",
     "JavaScript",
     "Ruby",
-    "PHP",
-    "C++",
     "Swift",
     "Go",
     "Kotlin",
@@ -52,18 +50,15 @@ const words = {
     "SQL",
   ],
   movies: [
-    "The Shawshank Redemption",
     "The Godfather",
     "The Dark Knight",
     "Pulp Fiction",
-    "The Good the Bad and the Ugly",
     "Forrest Gump",
     "Fight Club",
     "Inception",
     "Star Wars",
     "The Matrix",
     "Goodfellas",
-    "One Flew Over the Cuckoo Nest",
   ],
   people: [
     "Marilyn Monroe",
@@ -125,7 +120,7 @@ let randomPropValue = words[randomPropName];
 let randomValueNumber = Math.floor(Math.random() * randomPropValue.length);
 // The Chossen Word
 let randomValueValue = randomPropValue[randomValueNumber];
-console.log(randomValueValue); //* To See on the console what The Answer Is
+console.log(randomValueValue); //! To See on the console what The Answer Is
 
 //* Set Category Info  inside the HTML Document
 document.querySelector(".game-info .category span").innerHTML = randomPropName;
@@ -154,9 +149,11 @@ lettersAndSpace.forEach((letter) => {
 //* Select Guess Spans
 let guessSpans = document.querySelectorAll(".letters-guess span ");
 
-
-//* Set Wrong Attempts 
+//* Set Wrong Attempts
 let worngAttempts = 0;
+
+//* Set Right Attempts
+let rightAttempts = 0;
 
 //* Select The Draw Elemnt
 let theDraw = document.querySelector(".hangman-draw");
@@ -190,46 +187,67 @@ document.addEventListener("click", (e) => {
       }
     });
 
+    console.log(theStatus);
+
     // Outside Loop
-    // If letter is wrong 
-    if (theStatus!==true) {
-      // Increase the wrong attempts 
+    // if letter is right
+    // If letter is wrong
+    if (theStatus !== true) {
+      // Increase the wrong attempts
       worngAttempts++;
-      
-      // Add Class Wrong on the draw 
+
+      // Add Class Wrong on the draw
       theDraw.classList.add(`wrong-${worngAttempts}`);
 
-      // Play Fail Sound 
-      document.getElementById("fail").play()
-
-      if (worngAttempts === 8) {
-        endGame();
-
+      // Play Fail Sound
+      // document.getElementById("fail").play();
+    } else {
+      rightAttempts++;
+      let length = randomValueValue.length; // Get the length of the random word
+      if (rightAttempts === length) {
+        winGame();
         lettersContainer.classList.add("finished");
       }
     }
-    else {
+    if (worngAttempts === 8) {
+      endGame();
+
+      lettersContainer.classList.add("finished");
+    } else {
       document.getElementById("success").play();
     }
   }
 });
 
-
-//*End Game Function 
+//*End Game Function
 
 function endGame() {
-  //Create popup Div 
+  //Create popup Div
   let div = document.createElement("div");
 
-  // Create text 
-  let divText = document.createTextNode(`Game Over, The Word Is ${randomValueValue}`)
+  // Create text
+  let divText = document.createTextNode(
+    `Game Over, The Word Was "${randomValueValue}"`
+  );
 
-  // Append Text To Div 
-  div.appendChild(divText)
-  // Add Class On Div 
-  div.className = 'popup';
+  // Append Text To Div
+  div.appendChild(divText);
+  // Add Class On Div
+  div.className = "popup";
 
-  //Append To The Body 
+  //Append To The Body
   document.body.appendChild(div);
+}
 
+//* Win function
+
+function winGame() {
+  let div = document.createElement("div");
+  let divText = document.createTextNode(
+    `You Won, The Word Is "${randomValueValue}"`
+  );
+  div.appendChild(divText);
+  div.className = "win-popup";
+
+  document.body.appendChild(div);
 }

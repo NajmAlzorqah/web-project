@@ -1,9 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: Tahoma, Arial;
+  font-family: "Poppins", sans-serif;
+  background-color: #18181b;
+  color: white;
+}
+
+.blur {
+  position: absolute;
+  box-shadow: 0 0 1000px 50px #1d4ed8;
+  z-index: -100;
 }
 
 .container {
@@ -14,14 +24,17 @@ body {
 
 .row {
   display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
 }
 
 hr {
-  border: 1px solid #eee;
+  /* border: 1px solid #eee; */
+  box-shadow: 0 0 1000px 50px #1d4ed8;
 }
 
 .game-info {
   display: flex;
+  justify-content: space-between; /* Align items evenly */
 }
 
 .game-info .game-name {
@@ -42,15 +55,16 @@ hr {
 /** The HangMan Styles */
 .hangman-draw {
   flex: 1;
-  background-color: #f8f8f8;
+  background-color: transparent;
   padding: 20px;
-  height: 324px;
+  max-width: 50%; /* Adjust the maximum width as needed */
+  box-shadow: 0px 0px 60px -4px rgba(29, 78, 216, 0.58);
 }
 
 .hangman-draw .the-draw {
   width: 60px;
   height: 280px;
-  border-bottom: 4px solid #222;
+  border-bottom: 4px solid #fff;
   position: relative;
   margin: auto;
   left: -60px;
@@ -61,7 +75,7 @@ hr {
   content: "";
   position: absolute;
   width: 4px;
-  background-color: #222;
+  background-color: #fff;
   height: 100%;
   left: 50%;
   margin-left: -2px;
@@ -74,7 +88,7 @@ hr {
   content: "";
   position: absolute;
   height: 4px;
-  background-color: #222;
+  background-color: #fff;
   width: 100px;
   left: 30px;
   top: 15px;
@@ -82,7 +96,7 @@ hr {
 .hangman-draw .the-hang::after {
   content: "";
   position: absolute;
-  background-color: #222;
+  background-color: #fff;
   width: 4px;
   height: 30px;
   left: 130px;
@@ -92,7 +106,7 @@ hr {
 .hangman-draw .the-rope {
   width: 70px;
   height: 70px;
-  border: 4px dashed #222;
+  border: 4px dashed #fff;
   border-radius: 50%;
   position: absolute;
   left: 95px;
@@ -104,7 +118,7 @@ hr {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 4px solid #222;
+  border: 4px solid #fff;
   position: absolute;
   top: 55px;
   left: 105px;
@@ -113,7 +127,7 @@ hr {
 
 .hangman-draw .the-man .body {
   position: absolute;
-  background-color: #222;
+  background-color: #fff;
   width: 4px;
   height: 110px;
   top: 102px;
@@ -130,7 +144,7 @@ hr {
   width: 50px;
   position: absolute;
   height: 4px;
-  background-color: #222;
+  background-color: #fff;
   top: 140px;
 }
 
@@ -156,7 +170,7 @@ hr {
   width: 50px;
   position: absolute;
   height: 4px;
-  background-color: #222;
+  background-color: #fff;
   top: 220px;
 }
 
@@ -221,7 +235,7 @@ hr {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background-color: #009688;
+  background-color: #27272a;
   color: #fff;
   font-size: 24px;
   margin-right: 10px;
@@ -230,11 +244,19 @@ hr {
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 10px;
+  border-radius: 13px;
+
+  background: rgba(29, 78, 216, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.3px);
+  -webkit-backdrop-filter: blur(15.3px);
+  border: 1px solid rgba(29, 78, 216, 1);
 }
 
 /** the class of the clicked letter*/
 .letters .letter-box.clicked {
-  background-color: #222;
+  background-color: #fff;
   opacity: 0.2;
   pointer-events: none;
 }
@@ -243,7 +265,7 @@ hr {
 
 .letters-guess {
   margin: 10px auto;
-  background-color: #f8f8f8;
+  background-color: transparent;
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -259,9 +281,15 @@ hr {
   line-height: 60px;
   text-transform: uppercase;
   font-weight: bold;
-  background-color: #fdfdfd;
-  border-bottom: 3px solid #222;
+  border-bottom: 3px solid black;
   transition: 3s;
+
+  /* From https://css.glass */
+  background: rgba(106, 145, 255, 0.47);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
 }
 /** The Style For The Spaces */
 .letters-guess span.with-space {
@@ -274,23 +302,61 @@ hr {
   content: "";
   width: 20px;
   height: 4px;
-  background-color: #222;
+  background-color: #fff;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-
 .popup {
   position: fixed;
-  background-color: #009688;
   padding: 100px 20px;
   width: 80%;
   top: 10%;
   left: 10%;
   text-align: center;
   font-size: 40px;
-  border: 1px solid #ccc;
+  color: red;
+
+  background: rgba(29, 78, 216, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.3px);
+  -webkit-backdrop-filter: blur(15.3px);
+  border: 1px solid rgba(29, 78, 216, 1);
+}
+
+.win-popup {
+  position: fixed;
+  padding: 100px 20px;
+  width: 80%;
+  top: 10%;
+  left: 10%;
+  text-align: center;
+  font-size: 40px;
   color: #fff;
+
+  /* From https://css.glass */
+  background: rgba(29, 78, 216, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.3px);
+  -webkit-backdrop-filter: blur(15.3px);
+  border: 1px solid rgba(29, 78, 216, 1);
+}
+
+@media screen and (max-width: 768px) {
+  .letters .letter-box {
+    width: 45px; /* Adjust size for smaller screens */
+    height: 45px;
+    font-size: 20px;
+    line-height: 45px;
+  }
+}
+
+.letters .letter-box.clicked {
+  background-color: #fff;
+  opacity: 0.2;
+  pointer-events: none;
 }
