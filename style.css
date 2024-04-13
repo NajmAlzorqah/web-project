@@ -1,37 +1,43 @@
+/* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
+/* Global Styles */
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #18181b;
-  color: white;
+  font-family: "Poppins", sans-serif; /* Set font family */
+  background-color: #18181b; /* Set background color */
+  color: white; /* Set text color */
 }
 
+/* Background Blur */
 .blur {
   position: absolute;
-  box-shadow: 0 0 1000px 50px #1d4ed8;
+  box-shadow: 0 0 1000px 50px #1d4ed8; /* Add a blur effect */
   z-index: -100;
 }
 
+/* Container */
 .container {
-  margin: 20px auto;
-  width: 1000px;
-  height: 100vh;
+  margin: 20px auto; /* Set margin */
+  max-width: 100%; /* Set maximum width */
+  height: 100vh; /* Set height to 100% of viewport height */
 }
 
+/* Rows */
 .row {
   display: flex;
   flex-wrap: wrap; /* Allow items to wrap to the next line */
 }
 
+/* Horizontal Rule */
 hr {
-  /* border: 1px solid #eee; */
-  box-shadow: 0 0 1000px 50px #1d4ed8;
+  box-shadow: 0 0 1000px 50px #1d4ed8; /* Add a decorative effect */
 }
 
+/* Game Info */
 .game-info {
   display: flex;
   justify-content: space-between; /* Align items evenly */
@@ -45,14 +51,15 @@ hr {
   flex: 1;
   text-align: right;
 }
-/** the syling of the category name */
+
+/* Category Styling */
 .game-info .category span {
   text-transform: capitalize;
   color: #e31e63;
   font-weight: bold;
 }
 
-/** The HangMan Styles */
+/* Hangman Styles */
 .hangman-draw {
   flex: 1;
   background-color: transparent;
@@ -61,6 +68,7 @@ hr {
   box-shadow: 0px 0px 60px -4px rgba(29, 78, 216, 0.58);
 }
 
+/* Hangman Drawing Styles */
 .hangman-draw .the-draw {
   width: 60px;
   height: 280px;
@@ -81,9 +89,11 @@ hr {
   margin-left: -2px;
   display: none;
 }
+
 .hangman-draw .the-hang {
   display: none;
 }
+
 .hangman-draw .the-hang::before {
   content: "";
   position: absolute;
@@ -93,6 +103,7 @@ hr {
   left: 30px;
   top: 15px;
 }
+
 .hangman-draw .the-hang::after {
   content: "";
   position: absolute;
@@ -138,6 +149,7 @@ hr {
 .hangman-draw .the-man .hands {
   display: none;
 }
+
 .hangman-draw .the-man .hands::before,
 .hangman-draw .the-man .hands::after {
   content: "";
@@ -150,13 +162,11 @@ hr {
 
 .hangman-draw .the-man .hands::before {
   left: 85px;
-
   transform: rotate(30deg);
 }
 
 .hangman-draw .the-man .hands::after {
   left: 130px;
-
   transform: rotate(-30deg);
 }
 
@@ -176,17 +186,15 @@ hr {
 
 .hangman-draw .the-man .legs::before {
   left: 85px;
-
   transform: rotate(-30deg);
 }
 
 .hangman-draw .the-man .legs::after {
   left: 130px;
-
   transform: rotate(30deg);
 }
-/** Displaying the hangman depending on the classes that are set on the js*/
 
+/* Displaying the hangman depending on the classes that are set on the js */
 .hangman-draw.wrong-1 .the-draw {
   display: block;
 }
@@ -219,8 +227,7 @@ hr {
   display: block;
 }
 
-/**the letters styling*/
-
+/* Letters Styling */
 .letters {
   flex: 1;
   padding: 15px;
@@ -245,7 +252,6 @@ hr {
   cursor: pointer;
   margin-bottom: 10px;
   border-radius: 13px;
-
   background: rgba(29, 78, 216, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -254,15 +260,14 @@ hr {
   border: 1px solid rgba(29, 78, 216, 1);
 }
 
-/** the class of the clicked letter*/
+/* Clicked Letter Styling */
 .letters .letter-box.clicked {
   background-color: #fff;
   opacity: 0.2;
   pointer-events: none;
 }
 
-/** The Letters Guess Styles */
-
+/* Letter Guess Styles */
 .letters-guess {
   margin: 10px auto;
   background-color: transparent;
@@ -283,15 +288,14 @@ hr {
   font-weight: bold;
   border-bottom: 3px solid black;
   transition: 3s;
-
-  /* From https://css.glass */
   background: rgba(106, 145, 255, 0.47);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(11px);
   -webkit-backdrop-filter: blur(11px);
 }
-/** The Style For The Spaces */
+
+/* Space Styling */
 .letters-guess span.with-space {
   background: none;
   border-bottom: none;
@@ -309,6 +313,7 @@ hr {
   transform: translate(-50%, -50%);
 }
 
+/* Popups */
 .popup {
   position: fixed;
   padding: 100px 20px;
@@ -318,7 +323,6 @@ hr {
   text-align: center;
   font-size: 40px;
   color: red;
-
   background: rgba(29, 78, 216, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -336,8 +340,6 @@ hr {
   text-align: center;
   font-size: 40px;
   color: #fff;
-
-  /* From https://css.glass */
   background: rgba(29, 78, 216, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -346,17 +348,65 @@ hr {
   border: 1px solid rgba(29, 78, 216, 1);
 }
 
-@media screen and (max-width: 768px) {
+/* Media Query */
+@media screen and (max-width: 1200px) {
   .letters .letter-box {
-    width: 45px; /* Adjust size for smaller screens */
+    width: 45px;
     height: 45px;
     font-size: 20px;
     line-height: 45px;
   }
 }
+/* Media Query for smaller screens */
+@media screen and (max-width: 992px) {
+  .container {
+    width: 90%;
+  }
 
-.letters .letter-box.clicked {
-  background-color: #fff;
-  opacity: 0.2;
-  pointer-events: none;
+  .hangman-draw {
+    max-width: 100%;
+  }
+
+  .letters .letter-box {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+  }
+}
+
+/* Media Query for even smaller screens */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  .hangman-draw {
+    max-width: 100%;
+  }
+
+  .letters .letter-box {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 35px;
+  }
+}
+
+/* Media Query for very small screens */
+@media screen and (max-width: 576px) {
+  .container {
+    width: 90%;
+  }
+
+  .hangman-draw {
+    max-width: 100%;
+  }
+
+  .letters .letter-box {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+  }
 }
